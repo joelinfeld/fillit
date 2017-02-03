@@ -6,7 +6,7 @@
 /*   By: jinfeld <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 21:13:06 by jinfeld           #+#    #+#             */
-/*   Updated: 2017/01/31 14:07:33 by jinfeld          ###   ########.fr       */
+/*   Updated: 2017/02/02 19:23:32 by bchin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 int		count_shapes(char *argv)
 {
-	int ret;
-	int fd;
-	char buf[21];
+	int 	ret;
+	int 	fd;
+	int		i;
+	char	buf[21];
 
 	fd = open(argv, O_RDONLY);
 	if	(fd == -1)
@@ -31,12 +32,12 @@ int		count_shapes(char *argv)
 			write(2, "read() error!", 13);
 			return (1);
 		}
-		push_node(begin_list, tail_list, buf[0]);
+		i++;;
 	}
 	if (close(fd) == -1)
 	{
 		write(2, "close() error!", 13);
 		return (1);
 	}
-	return (0);
+	return (i);
 }
