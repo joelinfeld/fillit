@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   which_piece.c                                      :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bchin <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/02 19:32:30 by bchin             #+#    #+#             */
-/*   Updated: 2017/02/03 10:23:27 by bchin            ###   ########.fr       */
+/*   Created: 2017/02/03 09:57:03 by bchin             #+#    #+#             */
+/*   Updated: 2017/02/03 10:40:36 by bchin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include <stdio.h>
 
-int		piece_cmp(char *big, char *little)
+int		main(int argc, char **argv)
 {
-	int	i;
-	int	j;
+	char	*str;
 
-	i = 0;
-	j = 0;
-	while (big[i] != '\0')
-	{
-		while (big[i + j] == little[j])
-		{
-			if (little[j + i] == '\0')
-				return (1);
-			j++;
-		}
-		j = 0;
-		i++;
-	}
+	str = fill_array(argv[1]);
+	if (argc == 2)
+		printf("%s\n", str);
 	return (0);
 }

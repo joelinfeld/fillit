@@ -6,42 +6,43 @@
 /*   By: bchin <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 19:41:32 by bchin             #+#    #+#             */
-/*   Updated: 2017/02/02 19:52:03 by bchin            ###   ########.fr       */
+/*   Updated: 2017/02/03 10:40:13 by bchin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		*fill_array(char *argv)
+char	*fill_array(char *argv)
 {
 	int		ret;
 	int		fd;
 	char	buf[1];
-	int		*array;
-	int		pieces;
+	char	*array;
+	int		index;
 
-	pieces = count_shapes(argv);
+	index = 0;;
 	fd = open(argv, O_RDONLY);
-	array = (int *)malloc(sizeof(int) * (pieces + 1));
+	array = (char *)malloc(sizeof(char) * (count_length(argv) + 1));
 	if (fd == -1)
 	{
 		write(2, "ope() error!", 13);
-		return (1);
+		return (NULL);
 	}
-	while ((ret = read(fd, buf, 1)))
+	while ((ret = read(fd, &buf, 1)))
 	{
 		if (ret < 0)
 		{
 			write(2, "read() error!", 13);
-			return (1);
+			return (NULL);
 		}
-		array[pieces] = \0';
-		*array++ = *buf++;
+		array[index] = buf[0];
+		index++;
 	}
+	array[index] = '\0';
 	if (close(fd) == -1)
 	{
 		write(2, "close() error!", 13);
-		return (1);
+		return (NULL);
 	}
 	return (array);
 }
