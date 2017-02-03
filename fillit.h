@@ -6,7 +6,7 @@
 /*   By: bchin <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 19:23:55 by bchin             #+#    #+#             */
-/*   Updated: 2017/02/03 12:16:42 by bchin            ###   ########.fr       */
+/*   Updated: 2017/02/03 15:37:30 by bchin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ char	*fill_array(char *argv); //mallocs and copies file to a null terminated cha
 char	**split_me(char *str); //splits into pieces. Does not verify valid piece or size, just splits by 21 characters
 void	write_split(char **split, char *str);
 void	write_piece(char *dest, char *from);
-
+char	*find_hash(char *str); //finds first location of a '#' in a string
+int		index_score(char *str);
 
 # endif

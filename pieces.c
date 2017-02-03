@@ -1,48 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   pieces.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bchin <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/03 09:57:03 by bchin             #+#    #+#             */
-/*   Updated: 2017/02/03 15:46:14 by bchin            ###   ########.fr       */
+/*   Created: 2017/02/03 14:52:03 by bchin             #+#    #+#             */
+/*   Updated: 2017/02/03 15:37:37 by bchin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
-#include <unistd.h>
 
-void	ft_putstr(char *str)
+char	*find_hash(char *str)
 {
 	int i;
 
 	i = 0;
 	while (str[i] != '\0')
-		write(1, &str[i++], 1);
+	{
+		if (str[i] == '#')
+			break ;
+		i++;
+	}
+	return (&str[i]);
 }
 
-
-int		main(int argc, char **argv)
+int		index_score(char *str)
 {
-	char	**str;
-	char	*ptr;
-	int		i;
-	int		j;
-
+	int i;
+	int j;
+	
 	i = 0;
-	if (argc == 2)
+	j = 0;
+	while (str[i] != '\0')
 	{
-		str = split_me(fill_array(argv[1]));
-		while (str[i] != '\0')
-		{
-			ptr = find_hash(str[i]);
-			j = index_score(ptr);
-			printf("%d\n", j);
-			ft_putstr(str[i]);
-			i++;
-		}
+		if (str[i] == '#')
+			j += i;
+		i++;
 	}
-	return (0);
+	return (j);
 }
