@@ -6,7 +6,7 @@
 /*   By: bchin <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 19:23:55 by bchin             #+#    #+#             */
-/*   Updated: 2017/02/03 15:37:30 by bchin            ###   ########.fr       */
+/*   Updated: 2017/02/03 16:00:30 by bchin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ char	**split_me(char *str); //splits into pieces. Does not verify valid piece or
 void	write_split(char **split, char *str);
 void	write_piece(char *dest, char *from);
 char	*find_hash(char *str); //finds first location of a '#' in a string
-int		index_score(char *str);
+int		index_score(char *str); //returns sum of index '#' appears in. only 3 pieces have a score of 18, the rest are all different
+int		last_index(char *str); //returns the highest index the '#' appears in, the three pieces that have a sum or 18 have different max indexes '#' appears
+
 
 # endif
