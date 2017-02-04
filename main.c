@@ -6,7 +6,7 @@
 /*   By: bchin <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 09:57:03 by bchin             #+#    #+#             */
-/*   Updated: 2017/02/03 16:02:44 by bchin            ###   ########.fr       */
+/*   Updated: 2017/02/03 16:04:04 by bchin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		main(int argc, char **argv)
 		{
 			ptr = find_hash(str[i]); //points to first hash in str[i]
 			printf("index sum:%d\nmax index:%d\n", index_score(ptr), last_index(ptr));
-			ft_putstr(str[i]);
+			printf("%s", str[i]);
 			i++;
 		}
 	}
