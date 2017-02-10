@@ -6,7 +6,7 @@
 /*   By: bchin <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 14:52:03 by bchin             #+#    #+#             */
-/*   Updated: 2017/02/07 14:07:46 by bchin            ###   ########.fr       */
+/*   Updated: 2017/02/09 18:22:43 by jinfeld          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,26 @@ int		index_score(char *str)
 	return (j);
 }
 
+int		charcheck(char *str)
+{
+	int hash;
+	int i;
+
+	i = 0;
+	hash = 0;
+	while (str[i])
+	{
+		if (str[i] != '.' || str[i] != '#' || str[i] != '\n')
+			return(0);
+		if (str[i] == '#')
+			hash++;
+		i++;
+	}
+	if (hash != 4)
+		return (0);
+	return(1);
+}
+
 int		connections(char *str)
 {
 	int i;
@@ -64,6 +84,7 @@ int		connections(char *str)
 	j = 0;
 	while (str[i] != '\0')
 	{
+	//fix memory leaks
 		if (str[i] == '#' && str[i + 1] == '#')
 			j++;
 		if (str[i] == '#' && str[i + 5] == '#')

@@ -6,12 +6,13 @@
 /*   By: bchin <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 11:13:30 by bchin             #+#    #+#             */
-/*   Updated: 2017/02/07 13:49:45 by bchin            ###   ########.fr       */
+/*   Updated: 2017/02/09 15:42:20 by jinfeld          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
+//need to disqualify if any character except # or .
 int			char_is_newline(char a)
 {
 	if (a == '\n')
@@ -39,6 +40,7 @@ void		write_piece(char *dest, char *from)
 	dest[i] = '\0';
 }
 
+//memory leaks
 int			count_pieces(char *str)
 {
 	int	i;

@@ -6,7 +6,7 @@
 /*   By: bchin <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 09:57:03 by bchin             #+#    #+#             */
-/*   Updated: 2017/02/03 16:35:07 by bchin            ###   ########.fr       */
+/*   Updated: 2017/02/09 18:57:08 by jinfeld          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,21 @@ int		main(int argc, char **argv)
 	char	**str;
 	char	*ptr; 
 	int		i;
+	tet		*p;
 
 	i = 0;
 	if (argc == 2)
 	{
 		str = split_me(fill_array(argv[1]));
+		//if(!(p = (tet*)malloc(sizeof(tet) * count_pieces(argv[1]))))
+		if(!(p = (tet*)malloc(sizeof(tet) * 19)))
+			return (0);
 		while (str[i] != '\0')
 		{
 			ptr = find_hash(str[i]); //points to first hash in str[i]
 			printf("index sum:%d\nindex max:%d\nconnections%d\n", index_score(ptr), last_index(ptr), connections(str[i]));
+			p[i] = maketet(ptr, i);
+			printf("cypher:%s\n", p[i].bp);
 			printf("%s", str[i]);
 			i++;
 		}
