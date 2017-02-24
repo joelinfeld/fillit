@@ -6,7 +6,7 @@
 /*   By: bchin <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 19:23:55 by bchin             #+#    #+#             */
-/*   Updated: 2017/02/09 18:21:39 by jinfeld          ###   ########.fr       */
+/*   Updated: 2017/02/23 21:55:02 by jinfeld          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <stdio.h>
+#include <string.h>
 
 typedef struct	tetromino
 {
@@ -39,4 +40,8 @@ int		index_score(char *str); //returns sum of index '#' appears in. only 3 piece
 int		last_index(char *str); //returns the highest index the '#' appears in, the three pieces that have a sum or 18 have different max indexes '#' appears
 int		connections(char *str); // returns the sum of connections each block in a tetrimino has should be 6 or 8
 tet		maketet(char *str, int i);
+void	*ft_memalloc(size_t size);
+void 	ft_bzero(void *s, size_t n);
+void	fillit(tet *p, int nm, int sz);
+void	ft_putstr(char *str);
 # endif

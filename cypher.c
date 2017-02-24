@@ -6,32 +6,11 @@
 /*   By: jinfeld <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/09 11:56:38 by jinfeld           #+#    #+#             */
-/*   Updated: 2017/02/09 18:50:48 by jinfeld          ###   ########.fr       */
+/*   Updated: 2017/02/23 20:33:41 by jinfeld          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-static void	ft_bzero(void *s, size_t n)
-{
-	unsigned char *res;
-
-	res = s;
-	while (n--)
-	{
-		*res++ = 0;
-	}
-}
-static void	*ft_memalloc(size_t size)
-{
-	void *res;
-
-	res = malloc(size);
-	if (!res)
-		return (NULL);
-	ft_bzero(res, size);
-	return (res);
-}
 
 static void	cypher(char *str, char *bp)
 {
@@ -46,8 +25,8 @@ static void	cypher(char *str, char *bp)
 	{
 		if (str[i] == '#')
 		{
-			if(i - hashi == 1 || hashi == -1)
-				bp[j++] = '#';
+			if(i - hashi == 1 && hashi != -1)
+				bp[j++] = '1';
 			if(i - hashi == 3)
 				bp[j++] = '3';
 			if(i - hashi == 4)

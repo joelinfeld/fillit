@@ -6,7 +6,7 @@
 /*   By: bchin <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 09:57:03 by bchin             #+#    #+#             */
-/*   Updated: 2017/02/09 18:57:08 by jinfeld          ###   ########.fr       */
+/*   Updated: 2017/02/23 22:03:18 by jinfeld          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,15 @@ int		main(int argc, char **argv)
 	char	*ptr; 
 	int		i;
 	tet		*p;
-
+	int sz;
+	
+	sz = 3 * 4;
 	i = 0;
 	if (argc == 2)
 	{
 		str = split_me(fill_array(argv[1]));
 		//if(!(p = (tet*)malloc(sizeof(tet) * count_pieces(argv[1]))))
-		if(!(p = (tet*)malloc(sizeof(tet) * 19)))
+		if(!(p = (tet*)malloc(sizeof(tet) * 20)))
 			return (0);
 		while (str[i] != '\0')
 		{
@@ -47,6 +49,8 @@ int		main(int argc, char **argv)
 			printf("%s", str[i]);
 			i++;
 		}
+		p[3].bp = "STOP";
+		fillit(p, 3, sz);
 	}
 	return (0);
 }

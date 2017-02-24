@@ -6,13 +6,13 @@
 #    By: bchin <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/09 13:53:35 by bchin             #+#    #+#              #
-#    Updated: 2017/02/09 14:11:58 by bchin            ###   ########.fr        #
+#    Updated: 2017/02/23 19:20:32 by jinfeld          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=fillit
 CC=gcc
-CFLAGS+=-Wall -Wextra -Werror
+CFLAGS=-Wall -Wextra -Werror
 
 SRCS=$(wildcard *.c)
 
