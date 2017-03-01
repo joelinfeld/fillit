@@ -6,7 +6,7 @@
 /*   By: jinfeld <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/09 19:04:13 by jinfeld           #+#    #+#             */
-/*   Updated: 2017/02/28 20:05:56 by jinfeld          ###   ########.fr       */
+/*   Updated: 2017/02/28 21:06:34 by bchin            ###   ########.fr       */
 /*   Updated: 2017/02/28 19:07:25 by bchin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -23,7 +23,6 @@ static void printsq(char **sq)
 		ft_putstr(sq[i++]);
 		write(1, "\n", 1);
 	}
-	write(1, "\n", 1);
 }
 
 int		nextshape(tet *p)

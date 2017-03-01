@@ -6,7 +6,7 @@
 /*   By: jinfeld <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 19:26:08 by jinfeld           #+#    #+#             */
-/*   Updated: 2017/02/28 19:45:57 by jinfeld          ###   ########.fr       */
+/*   Updated: 2017/02/28 21:05:49 by bchin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ char	**blanksq(int size)
 	int		j;
 	char	**sq;
 	
-	printf("sz:%d\n", size);
 	if (!(sq = (char**)malloc(sizeof(char*) * size + 1)))
 		return(0);
 	i = 0;

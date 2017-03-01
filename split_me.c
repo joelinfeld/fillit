@@ -6,7 +6,7 @@
 /*   By: bchin <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 11:13:30 by bchin             #+#    #+#             */
-/*   Updated: 2017/02/28 19:28:34 by bchin            ###   ########.fr       */
+/*   Updated: 2017/02/28 22:37:00 by bchin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void		write_piece(char *dest, char *from)
 	int i;
 
 	i = 0;
-	while (i < 21)
+	while (i < 20)
 	{
 		dest[i] = from[i];
 		i++;
@@ -55,7 +55,7 @@ void		write_split(char **split, char *str)
 	k = 0;
 	while (str[i] != '\0')
 	{
-		split[piece] = (char*)malloc(sizeof(char) * 22);
+		split[piece] = (char*)malloc(sizeof(char) * 21);
 		if (split)
 		{
 			write_piece(split[piece], &str[i]);
