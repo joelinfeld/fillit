@@ -6,7 +6,7 @@
 /*   By: bchin <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 09:57:03 by bchin             #+#    #+#             */
-/*   Updated: 2017/02/28 17:35:46 by jinfeld          ###   ########.fr       */
+/*   Updated: 2017/02/28 19:22:46 by bchin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,15 @@ void	ft_putstr(char *str)
 		write(1, &str[i++], 1);
 }
 
+static int		shapes(char **str)
+{
+	int i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
 
 int		main(int argc, char **argv)
 {
@@ -30,27 +39,23 @@ int		main(int argc, char **argv)
 	char	*ptr; 
 	int		i;
 	tet		*p;
-	int sz;
+	int		sz;
 	
-	sz = 19 * 4;
 	i = 0;
 	if (argc == 2)
 	{
 		str = split_me(fill_array(argv[1]));
-		//if(!(p = (tet*)malloc(sizeof(tet) * count_pieces(argv[1]))))
-		if(!(p = (tet*)malloc(sizeof(tet) * 20)))
+		sz = shapes(str) * 4;
+		if(!(p = (tet*)malloc(sizeof(tet) * shapes(str) + 1)))
 			return (0);
 		while (str[i] != '\0')
 		{
-			ptr = find_hash(str[i]); //points to first hash in str[i]
-			printf("index sum:%d\nindex max:%d\nconnections%d\n", index_score(ptr), last_index(ptr), connections(str[i]));
+			ptr = find_hash(str[i]);
 			p[i] = maketet(ptr, i);
-			printf("cypher:%s\n", p[i].bp);
-			printf("%s", str[i]);
 			i++;
 		}
-		p[19].bp = "STOP";
-		fillit(p, 19, sz);
+		p[shapes(str)].bp = "STOP";
+		fillit(p, shapes(str), sz);
 	}
 	return (0);
 }

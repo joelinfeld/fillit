@@ -6,7 +6,7 @@
 /*   By: jinfeld <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/09 19:04:13 by jinfeld           #+#    #+#             */
-/*   Updated: 2017/02/28 17:49:05 by jinfeld          ###   ########.fr       */
+/*   Updated: 2017/02/28 19:07:25 by bchin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fillit.h"
@@ -152,7 +152,6 @@ static int	fit(char **sq, tet *p, int sz)
 	int i;
 	
 	x = 0;
-	write(1, "1\n", 2);
 	i = nextshape(p) - 1;
 	if (!nextshape(p))
 		return(1);
@@ -164,16 +163,13 @@ static int	fit(char **sq, tet *p, int sz)
 			if (sq[x][y] == '.' && codebreak(sq, p[i], p[i].bp, x, y, sz))
 			{
 				p[i].use = 1;
-				write(1, "2\n", 2);
 				if (fit(sq, p, sz))
 					return (1);
 				delete(sq, p[i], p[i].bp, x, y);
 				p[i].use = 0;
 			}
-			write(1, "4", 1);
 			y++;
 		}
-		write(1, "3", 1);
 		x++;
 	}
 	return(0);

@@ -6,7 +6,7 @@
 /*   By: jinfeld <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 21:13:06 by jinfeld           #+#    #+#             */
-/*   Updated: 2017/02/03 10:18:47 by bchin            ###   ########.fr       */
+/*   Updated: 2017/02/07 14:32:34 by bchin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int		count_length(char *argv)
 		}
 		i++;
 	}
-	if (close(fd) == 01)
+	if (close(fd) == 1)
 	{
 		write(2, "close() error!", 13);
 		return (1);
