@@ -6,7 +6,7 @@
 /*   By: bchin <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 09:57:03 by bchin             #+#    #+#             */
-/*   Updated: 2017/02/23 22:03:18 by jinfeld          ###   ########.fr       */
+/*   Updated: 2017/02/28 17:35:46 by jinfeld          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		main(int argc, char **argv)
 	tet		*p;
 	int sz;
 	
-	sz = 3 * 4;
+	sz = 19 * 4;
 	i = 0;
 	if (argc == 2)
 	{
@@ -49,8 +49,8 @@ int		main(int argc, char **argv)
 			printf("%s", str[i]);
 			i++;
 		}
-		p[3].bp = "STOP";
-		fillit(p, 3, sz);
+		p[19].bp = "STOP";
+		fillit(p, 19, sz);
 	}
 	return (0);
 }
