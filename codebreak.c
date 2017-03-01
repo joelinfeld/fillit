@@ -6,7 +6,7 @@
 /*   By: jinfeld <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 19:21:58 by jinfeld           #+#    #+#             */
-/*   Updated: 2017/02/28 19:25:06 by jinfeld          ###   ########.fr       */
+/*   Updated: 2017/02/28 19:41:07 by jinfeld          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@ void		pdelete(char **sq, tet p, char *bp, int x, int y)
 {
 	sq[x][y] = '.';
 	if (*bp == '1')
-		delete(sq, p, bp + 1, x, y + 1);
+		pdelete(sq, p, bp + 1, x, y + 1);
 	if (*bp == 'n')
-		delete(sq, p, bp + 1, x + 1, y);
+		pdelete(sq, p, bp + 1, x + 1, y);
 	if (*bp == '-')
-		delete(sq, p, bp + 1, x + 1, y - 1);
+		pdelete(sq, p, bp + 1, x + 1, y - 1);
 	if (*bp == '+')
-		delete(sq, p, bp + 1, x + 1, y + 1);
+		pdelete(sq, p, bp + 1, x + 1, y + 1);
 	if (*bp == '3')
-		delete(sq, p, bp + 1, x + 1, y - 2);
+		pdelete(sq, p, bp + 1, x + 1, y - 2);
 }
 
 static int cheatsheet(char **sq, tet p, char *bp, int x, int y, int sz)

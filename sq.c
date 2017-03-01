@@ -6,11 +6,23 @@
 /*   By: jinfeld <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 19:26:08 by jinfeld           #+#    #+#             */
-/*   Updated: 2017/02/28 19:27:17 by jinfeld          ###   ########.fr       */
+/*   Updated: 2017/02/28 19:45:57 by jinfeld          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+static int ft_sqrt(int nb, int cap)
+{
+	if (nb < 0)
+		return (0);
+	if (nb * nb != cap)
+		return (ft_sqrt(nb - 1, cap));
+	if (nb * nb == cap)
+		return (nb);
+	else 
+		return (0);
+}
 
 int nearestsq(int nb)
 {

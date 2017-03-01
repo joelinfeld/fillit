@@ -6,26 +6,24 @@
 /*   By: jinfeld <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/09 19:04:13 by jinfeld           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2017/02/28 19:30:21 by jinfeld          ###   ########.fr       */
-=======
+/*   Updated: 2017/02/28 19:46:42 by jinfeld          ###   ########.fr       */
 /*   Updated: 2017/02/28 19:07:25 by bchin            ###   ########.fr       */
->>>>>>> 25796212bfc24d15c8d19bad444637d51a9ec5fa
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static int ft_sqrt(int nb, int cap)
+static void printsq(char **sq)
 {
-	if (nb < 0)
-		return (0);
-	if (nb * nb != cap)
-		return (ft_sqrt(nb - 1, cap));
-	if (nb * nb == cap)
-		return (nb);
-	else 
-		return (0);
+	int i;
+
+	i = 0;
+	while(sq[i])
+	{
+		ft_putstr(sq[i++]);
+		write(1, "\n", 1);
+	}
+	write(1, "\n", 1);
 }
 
 int		nextshape(tet *p)
@@ -82,4 +80,6 @@ void	fillit(tet *p, int nm, int sz)
 	sq = blanksq(sqz);
 	if(!fit(sq, p, sqz))
 		fillit(p, nm, sz + 1);
+	else
+		printsq(sq);
 }

@@ -6,7 +6,7 @@
 /*   By: bchin <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 09:57:03 by bchin             #+#    #+#             */
-/*   Updated: 2017/02/28 19:39:34 by jinfeld          ###   ########.fr       */
+/*   Updated: 2017/02/28 19:46:47 by jinfeld          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,6 @@ static int		shapes(char **str)
 	return (i);
 }
 
-static void printsq(char **sq)
-{
-	int i;
-
-	i = 0;
-	while(sq[i])
-	{
-		ft_putstr(sq[i++]);
-		write(1, "\n", 1);
-	}
-	write(1, "\n", 1);
-}
-
 int		main(int argc, char **argv)
 {
 	char	**str;
@@ -69,7 +56,6 @@ int		main(int argc, char **argv)
 		}
 		p[shapes(str)].bp = "STOP";
 		fillit(p, shapes(str), sz);
-		printsq(sq);
 	}
 	return (0);
 }

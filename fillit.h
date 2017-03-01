@@ -6,7 +6,7 @@
 /*   By: bchin <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 19:23:55 by bchin             #+#    #+#             */
-/*   Updated: 2017/02/28 19:29:20 by jinfeld          ###   ########.fr       */
+/*   Updated: 2017/02/28 19:44:30 by jinfeld          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,10 @@ void 	ft_bzero(void *s, size_t n);
 void	fillit(tet *p, int nm, int sz);
 void	ft_putstr(char *str);
 int		codebreak(char **sq, tet p, char *bp, int x, int y, int sz);
-void	pdelete(char **sq, tet p, char *bp, int x, int y, int sz);
+void	pdelete(char **sq, tet p, char *bp, int x, int y);
 int		nearestsq(int nb);
 int		char_is_newline(char a);
 int		char_is_dot(char a);
+char	**blanksq(int size);
 
 # endif
