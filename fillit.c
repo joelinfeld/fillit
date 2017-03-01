@@ -28,18 +28,6 @@ static int ft_sqrt(int nb, int cap)
 		return (0);
 }
 
-static void printsq(char **sq)
-{
-	int i;
-
-	i = 0;
-	while(sq[i])
-	{
-		ft_putstr(sq[i++]);
-		write(1, "\n", 1);
-	}
-	write(1, "\n", 1);
-}
 int		nextshape(tet *p)
 {
 	int i;
