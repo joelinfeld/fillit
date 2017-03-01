@@ -6,7 +6,7 @@
 /*   By: jinfeld <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/09 19:04:13 by jinfeld           #+#    #+#             */
-/*   Updated: 2017/02/28 19:46:42 by jinfeld          ###   ########.fr       */
+/*   Updated: 2017/02/28 20:05:56 by jinfeld          ###   ########.fr       */
 /*   Updated: 2017/02/28 19:07:25 by bchin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -75,11 +75,13 @@ void	fillit(tet *p, int nm, int sz)
 {
 	int		sqz;
 	char	**sq;
+	int		sqd;
 
 	sqz = nearestsq(sz);
 	sq = blanksq(sqz);
+	sqd = (sqz + 1) * (sqz + 1);
 	if(!fit(sq, p, sqz))
-		fillit(p, nm, sz + 1);
+		fillit(p, nm, sqd);
 	else
 		printsq(sq);
 }
