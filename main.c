@@ -6,7 +6,7 @@
 /*   By: bchin <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 09:57:03 by bchin             #+#    #+#             */
-/*   Updated: 2017/02/28 19:46:47 by jinfeld          ###   ########.fr       */
+/*   Updated: 2017/02/28 22:53:43 by bchin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,17 @@ int		main(int argc, char **argv)
 	i = 0;
 	if (argc == 2)
 	{
+		if (!check_count(argv[1]))
+		{
+			write(1, "error\n", 6);
+			return (0);
+		}
 		str = split_me(fill_array(argv[1]));
+		if (!check_errors(str, shapes(str)))
+		{
+			write(1, "error\n", 6);
+			return (0);
+		}
 		sz = shapes(str) * 4;
 		if(!(p = (tet*)malloc(sizeof(tet) * shapes(str) + 1)))
 			return (0);

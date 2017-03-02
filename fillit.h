@@ -6,7 +6,7 @@
 /*   By: bchin <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 19:23:55 by bchin             #+#    #+#             */
-/*   Updated: 2017/02/28 19:44:30 by jinfeld          ###   ########.fr       */
+/*   Updated: 2017/02/28 21:56:58 by bchin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,7 @@ int		nearestsq(int nb);
 int		char_is_newline(char a);
 int		char_is_dot(char a);
 char	**blanksq(int size);
-
+int		check_count(char *file);
+int		check_errors(char **str, int pieces);
+int		check_piece_count(char **str);
 # endif
