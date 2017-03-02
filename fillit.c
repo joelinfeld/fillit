@@ -6,7 +6,7 @@
 /*   By: jinfeld <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 21:46:37 by jinfeld           #+#    #+#             */
-/*   Updated: 2017/02/28 21:59:34 by jinfeld          ###   ########.fr       */
+/*   Updated: 2017/03/02 15:30:04 by jinfeld          ###   ########.fr       */
 /*   Created: 2017/02/09 19:04:13 by jinfeld           #+#    #+#             */
 /*   Updated: 2017/02/28 21:06:34 by bchin            ###   ########.fr       */
 /*   Updated: 2017/02/28 19:07:25 by bchin            ###   ########.fr       */
@@ -42,32 +42,30 @@ int			nextshape(tet *p)
 	return (0);
 }
 
-static int	fit(char **sq, tet *p, int sz)
+static int	fit(char **sq, tet *p,  num nums)
 {
-	int x;
-	int y;
 	int i;
-
-	x = 0;
+	
+	nums.x = 0;
 	i = nextshape(p) - 1;
 	if (!nextshape(p))
 		return (1);
-	while (x < sz)
+	while (nums.x < nums.sz)
 	{
-		y = 0;
-		while (sq[x][y])
+		nums.y = 0;
+		while (sq[nums.x][nums.y])
 		{
-			if (sq[x][y] == '.' && codebreak(sq, p[i], p[i].bp, x, y, sz))
+			if (sq[nums.x][nums.y] == '.' && codebreak(sq, p[i], p[i].bp, nums))
 			{
 				p[i].use = 1;
-				if (fit(sq, p, sz))
+				if (fit(sq, p, nums))
 					return (1);
-				pdelete(sq, p[i], p[i].bp, x, y);
+				pdelete(sq, p[i], p[i].bp, nums);
 				p[i].use = 0;
 			}
-			y++;
+			nums.y++;
 		}
-		x++;
+		nums.x++;
 	}
 	return (0);
 }
@@ -77,11 +75,14 @@ void		fillit(tet *p, int nm, int sz)
 	int		sqz;
 	char	**sq;
 	int		sqd;
-
+	num		nums;
+	
+	nums = makenum(0, 0, 0);
 	sqz = nearestsq(sz);
+	nums.sz = sqz;
 	sq = blanksq(sqz);
 	sqd = (sqz + 1) * (sqz + 1);
-	if (!fit(sq, p, sqz))
+	if (!fit(sq, p, nums))
 		fillit(p, nm, sqd);
 	else
 		printsq(sq);

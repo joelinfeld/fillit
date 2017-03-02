@@ -6,7 +6,7 @@
 /*   By: bchin <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 09:57:03 by bchin             #+#    #+#             */
-/*   Updated: 2017/02/28 22:53:43 by bchin            ###   ########.fr       */
+/*   Updated: 2017/03/02 15:11:49 by jinfeld          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int		main(int argc, char **argv)
 			i++;
 		}
 		p[shapes(str)].bp = "STOP";
+		p[shapes(str)].use = 1;
 		fillit(p, shapes(str), sz);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: jinfeld <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/09 11:56:38 by jinfeld           #+#    #+#             */
-/*   Updated: 2017/02/23 20:33:41 by jinfeld          ###   ########.fr       */
+/*   Updated: 2017/03/02 15:05:35 by jinfeld          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,14 @@ tet		maketet(char *str, int i)
 	ret.w = weed(str);
 	ret.alpha = 'A' + i;
 	ret.use = 0;
+	return (ret);
+}
+num		makenum(int x, int y, int sz)
+{
+	num ret;
+
+	ret.x = x;
+	ret.y = y;
+	ret.sz = sz;
 	return (ret);
 }

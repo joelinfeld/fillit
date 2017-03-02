@@ -6,7 +6,7 @@
 /*   By: bchin <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 19:23:55 by bchin             #+#    #+#             */
-/*   Updated: 2017/02/28 21:56:58 by bchin            ###   ########.fr       */
+/*   Updated: 2017/03/02 15:21:11 by jinfeld          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ typedef struct	tetromino
 	char		alpha;
 	int			use;
 } 				tet;
+typedef struct numlist
+{
+	int 		x;
+	int 		y;
+	int 		sz;
+}				num;		
 int		count_pieces(char *str); // counts how many shapes there are based off ".\n\n"
 int		count_length(char *argv); // counts how many characters exist in the file opened
 int		piece_cmp(char *big, char *little); //function to compare pieces to see which piece it is and if it is valid (strstr but returns (1) for match)
@@ -40,12 +46,13 @@ int		index_score(char *str); //returns sum of index '#' appears in. only 3 piece
 int		last_index(char *str); //returns the highest index the '#' appears in, the three pieces that have a sum or 18 have different max indexes '#' appears
 int		connections(char *str); // returns the sum of connections each block in a tetrimino has should be 6 or 8
 tet		maketet(char *str, int i);
+num		makenum(int x, int y, int sz);
 void	*ft_memalloc(size_t size);
 void 	ft_bzero(void *s, size_t n);
 void	fillit(tet *p, int nm, int sz);
 void	ft_putstr(char *str);
-int		codebreak(char **sq, tet p, char *bp, int x, int y, int sz);
-void	pdelete(char **sq, tet p, char *bp, int x, int y);
+int		codebreak(char **sq, tet p, char *bp, num nums);
+void	pdelete(char **sq, tet p, char *bp, num nums);
 int		nearestsq(int nb);
 int		char_is_newline(char a);
 int		char_is_dot(char a);
@@ -53,4 +60,5 @@ char	**blanksq(int size);
 int		check_count(char *file);
 int		check_errors(char **str, int pieces);
 int		check_piece_count(char **str);
+
 # endif
