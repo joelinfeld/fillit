@@ -6,7 +6,7 @@
 /*   By: bchin <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 11:13:30 by bchin             #+#    #+#             */
-/*   Updated: 2017/02/28 22:37:00 by bchin            ###   ########.fr       */
+/*   Updated: 2017/03/02 18:12:21 by jinfeld          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,18 @@ void		write_piece(char *dest, char *from)
 int			count_pieces(char *str)
 {
 	int	i;
+	int j;
 	int	pieces;
 
 	pieces = 0;
 	i = 0;
+	j = ft_strlen(str);
 	while (str[i] != '\0')
 	{
-		if (char_is_dot(str[i]) == 1
-		&& i - 2 > 0
-		&& char_is_newline(str[i + 1]) == 1
-		&& (char_is_newline(str[i + 2]) == 1 || str[i + 2] == '\0'))
+		if (j - i > 1
+			&& char_is_dot(str[i]) == 1
+			&& char_is_newline(str[i + 1]) == 1
+			&& (char_is_newline(str[i + 2]) == 1 || str[i + 2] == '\0'))
 			pieces++;
 		i++;
 	}
@@ -47,7 +49,7 @@ int			count_pieces(char *str)
 void		write_split(char **split, char *str)
 {
 	int	i;
-	int k;
+	int	k;
 	int	piece;
 
 	piece = 0;
@@ -62,7 +64,7 @@ void		write_split(char **split, char *str)
 			piece++;
 		}
 		i++;
-		while (i % 21 != 0)
+		while (i % 21 != 0 && str[i] != '\0')
 			i++;
 	}
 }

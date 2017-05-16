@@ -6,13 +6,13 @@
 /*   By: jinfeld <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 19:21:58 by jinfeld           #+#    #+#             */
-/*   Updated: 2017/03/02 15:42:55 by jinfeld          ###   ########.fr       */
+/*   Updated: 2017/03/02 17:38:31 by bchin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void		pdelete(char **sq, tet p, char *bp, num nums)
+void		pdelete(char **sq, t_tet p, char *bp, t_num nums)
 {
 	sq[nums.x][nums.y] = '.';
 	if (*bp == '1' && nums.y++ >= 0)
@@ -30,7 +30,7 @@ void		pdelete(char **sq, tet p, char *bp, num nums)
 	}
 }
 
-static int	cheatsheet(char **sq, tet p, char *bp, num nums)
+static int	cheatsheet(char **sq, t_tet p, char *bp, t_num nums)
 {
 	if (*bp == '1' && nums.sz - nums.y++ >= 2)
 		if (codebreak(sq, p, bp + 1, nums))
@@ -53,7 +53,7 @@ static int	cheatsheet(char **sq, tet p, char *bp, num nums)
 	return (0);
 }
 
-int			codebreak(char **sq, tet p, char *bp, num nums)
+int			codebreak(char **sq, t_tet p, char *bp, t_num nums)
 {
 	if (sq[nums.x][nums.y] == '.')
 		sq[nums.x][nums.y] = p.alpha;

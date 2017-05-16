@@ -6,7 +6,7 @@
 /*   By: bchin <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 09:57:03 by bchin             #+#    #+#             */
-/*   Updated: 2017/03/02 15:11:49 by jinfeld          ###   ########.fr       */
+/*   Updated: 2017/03/09 19:11:34 by jinfeld          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
-void	ft_putstr(char *str)
+void			ft_putstr(const char *str)
 {
 	int i;
 
@@ -33,40 +33,52 @@ static int		shapes(char **str)
 	return (i);
 }
 
-int		main(int argc, char **argv)
+static void		mrlist(char **str, t_tet *p)
+{
+	int		i;
+	char	*ptr;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		ptr = find_hash(str[i]);
+		p[i] = maketet(ptr, i);
+		i++;
+	}
+	p[shapes(str)].bp = "STOP";
+}
+
+void			error(char *str)
+{
+	ft_putendl(str);
+	exit(EXIT_FAILURE);
+}
+
+int				main(int argc, char **argv)
 {
 	char	**str;
-	char	*ptr; 
-	int		i;
-	tet		*p;
+	t_tet	*p;
 	int		sz;
-	
-	i = 0;
+
 	if (argc == 2)
 	{
 		if (!check_count(argv[1]))
-		{
-			write(1, "error\n", 6);
-			return (0);
-		}
+			error("error");
 		str = split_me(fill_array(argv[1]));
 		if (!check_errors(str, shapes(str)))
 		{
-			write(1, "error\n", 6);
-			return (0);
+			arrdel(str);
+			error("error");
 		}
-		sz = shapes(str) * 4;
-		if(!(p = (tet*)malloc(sizeof(tet) * shapes(str) + 1)))
+		sz = shapes(str);
+		if (!(p = (t_tet*)malloc(sizeof(t_tet) * sz + 1)))
 			return (0);
-		while (str[i] != '\0')
-		{
-			ptr = find_hash(str[i]);
-			p[i] = maketet(ptr, i);
-			i++;
-		}
-		p[shapes(str)].bp = "STOP";
-		p[shapes(str)].use = 1;
-		fillit(p, shapes(str), sz);
+		mrlist(str, p);
+		arrdel(str);
+		fillit(p, sz, sz * 4);
+		pdel(&p);
 	}
+	else
+		error("invalid number of arguments.\nusage: ./fillit [filename]");
 	return (0);
 }

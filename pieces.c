@@ -6,7 +6,7 @@
 /*   By: bchin <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 14:52:03 by bchin             #+#    #+#             */
-/*   Updated: 2017/02/28 22:53:40 by bchin            ###   ########.fr       */
+/*   Updated: 2017/03/02 18:29:39 by jinfeld          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ int		char_check(char *str)
 	while (str[i])
 	{
 		if (str[i] != '.' && str[i] != '#' && str[i] != '\n')
-			return(0);
+			return (0);
 		if (str[i] == '#')
 			hash++;
 		i++;
 	}
 	if (hash != 4)
 		return (0);
-	return(1);
+	return (1);
 }
 
 int		connections(char *str)
@@ -54,7 +54,7 @@ int		connections(char *str)
 
 	i = 0;
 	j = 0;
-	k = strlen(str);
+	k = ft_strlen(str);
 	while (str[i] != '\0')
 	{
 		if ((k - i > 1) && str[i] == '#' && str[i + 1] == '#')
@@ -70,41 +70,21 @@ int		connections(char *str)
 	return (j);
 }
 
-int		check_count(char *file)
+int		check_newlines(char *str)
 {
-	int		i;
+	int i;
+	int j;
 
-	i = count_length(file);
-	if (((i - 20) % 21) != 0)
-		return (0);
-	return (1);
+	i = 0;
+	j = 0;
+	while (str[i])
+	{
+		if (str[i] == '\n')
+			j++;
+		i++;
+	}
+	return (j);
 }
-
-//int		check_piece_count(char **str)
-//{
-//	int i;
-//	int j;
-//
-//	i = 0;
-//	j = 0;
-//	while (str[j])
-//	{
-//		while (str[j][i])
-//		{
-//			if (char_is_dot(str[j][i]) == 1
-//			&& i - 2 > 0
-//			&& char_is_newline(str[j][i + 1]) == 1
-//			&& (char_is_newline(str[j][i + 2]) == 1 || str[i + 2] == '\0'))
-//			{
-//				if (i < 17)
-//					return (0);
-//			}
-//			i++;
-//		}
-//		j++;
-//	}
-//	return (1);
-//}
 
 int		check_errors(char **str, int pieces)
 {
@@ -116,6 +96,8 @@ int		check_errors(char **str, int pieces)
 		if (connections(str[i]) != 6 && connections(str[i]) != 8)
 			return (0);
 		if (!char_check(str[i]))
+			return (0);
+		if (check_newlines(str[i]) != 4)
 			return (0);
 		i++;
 	}

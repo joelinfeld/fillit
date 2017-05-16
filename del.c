@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   char.c                                             :+:      :+:    :+:   */
+/*   del.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bchin <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: jinfeld <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/28 19:27:21 by bchin             #+#    #+#             */
-/*   Updated: 2017/03/02 17:24:46 by bchin            ###   ########.fr       */
+/*   Created: 2017/03/09 18:06:05 by jinfeld           #+#    #+#             */
+/*   Updated: 2017/03/09 19:11:59 by jinfeld          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int			char_is_newline(char a)
-{
-	if (a == '\n')
-		return (1);
-	return (0);
-}
-
-int			char_is_dot(char a)
-{
-	if (a == '.' || a == '#')
-		return (1);
-	return (0);
-}
-
-int			check_count(char *file)
+void	arrdel(char **sq)
 {
 	int i;
 
-	i = count_length(file);
-	if (((i - 20) % 21) != 0)
-		return (0);
-	return (1);
+	i = 0;
+	while (sq[i])
+		ft_strdel(&sq[i++]);
+	ft_memdel((void**)sq);
+}
+
+void	pdel(t_tet **p)
+{
+	int i;
+
+	i = 0;
+	while (!ft_strcmp(p[i]->bp, "STOP"))
+		ft_strdel(&p[i++]->bp);
+	ft_strdel(&p[i]->bp);
+	ft_memdel((void**)p);
 }

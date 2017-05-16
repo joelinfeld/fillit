@@ -6,7 +6,7 @@
 /*   By: jinfeld <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 21:13:06 by jinfeld           #+#    #+#             */
-/*   Updated: 2017/02/07 14:32:34 by bchin            ###   ########.fr       */
+/*   Updated: 2017/03/09 17:39:20 by jinfeld          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,23 @@
 
 int		count_shapes(char *argv)
 {
-	int 	ret;
-	int 	fd;
+	int		ret;
+	int		fd;
 	int		i;
 	char	buf[21];
 
 	i = 0;
 	fd = open(argv, O_RDONLY);
-	if	(fd == -1)
-	{
-		write(2, "open() error!", 13);
-			return (1);
-	}
+	if (fd == -1)
+		return (0);
 	while ((ret = read(fd, buf, 21)))
 	{
 		if (ret < 0)
-		{
-			write(2, "read() error!", 13);
-			return (1);
-		}
+			return (0);
 		i++;
 	}
 	if (close(fd) == -1)
-	{
-		write(2, "close() error!", 13);
-		return (1);
-	}
+		return (0);
 	return (i);
 }
 
@@ -53,23 +44,14 @@ int		count_length(char *argv)
 	i = 0;
 	fd = open(argv, O_RDONLY);
 	if (fd == -1)
-	{
-		write(2, "open() error!", 13);
-		return (1);
-	}
+		return (0);
 	while ((ret = read(fd, buf, 1)))
 	{
 		if (ret < 0)
-		{
-			write(2, "read() error!", 13);
-			return (1);
-		}
+			return (0);
 		i++;
 	}
 	if (close(fd) == 1)
-	{
-		write(2, "close() error!", 13);
-		return (1);
-	}
+		return (0);
 	return (i);
 }
